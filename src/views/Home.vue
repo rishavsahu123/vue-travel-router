@@ -1,18 +1,52 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>All Destination</h1>
+    <div class="destination">
+      <div v-for="destination in destinations" :key="destination.slug">
+        <router-link :to="destination">
+          <h2>{{ destination.name }}</h2>
+        </router-link>
+        <figure>
+          <router-link :to="destination.name">
+            <img
+              :src="require(`@/assets/${destination.image}`)"
+              :alt="destination.name"
+            />
+          </router-link>
+        </figure>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// next line will ignore all warning in a file.
+/* eslint-disable */
+// for single line ignore, use below magic comment
+// eslint-disable-next-line
+import store from "@/store";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  }
+  components: {},
+  data() {
+    return {
+      destinations: store.destinations,
+    };
+  },
 };
 </script>
+<style scoped>
+.home {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+img {
+  max-width: 200px;
+}
+.destination {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
