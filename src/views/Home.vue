@@ -23,7 +23,7 @@
 // @ is an alias to /src
 // next line will ignore all warning in a file.
 /* eslint-disable */
-// for single line ignore, use below magic comment
+// for single line ignore, use below comment
 // eslint-disable-next-line
 import store from "@/store";
 
