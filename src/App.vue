@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <TopNavigation />
-    <router-view />
+    <!-- Update page after clicking on nav -->
+    <router-view :key="$route.params" />
   </div>
 </template>
 <script>
