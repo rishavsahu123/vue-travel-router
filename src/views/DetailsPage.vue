@@ -1,3 +1,42 @@
 <template>
-  <div>Page detail: {{ this.$route.params.id }}</div>
+  <div class="detail-page">
+    <img
+      :src="require(`@/assets/${destination.image}`)"
+      :alt="destination.name"
+    />
+    <p>{{ destination.description }}</p>
+  </div>
 </template>
+<script>
+/* eslint-disable */
+import store from "@/store";
+export default {
+  data() {
+    return {
+      destinationId: this.$route.params.id,
+    };
+  },
+  computed: {
+    destination() {
+      return store.destinations.find(
+        (item) => item.slug === this.destinationId
+      );
+    },
+  },
+};
+</script>
+<style scoped>
+img {
+  max-width: 600px;
+  max-height: 400px;
+}
+.detail-page {
+  display: flex;
+  justify-content: space-between;
+}
+p {
+  margin: 0 40px;
+  font-size: 20px;
+  text-align: left;
+}
+</style>
