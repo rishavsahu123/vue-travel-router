@@ -2,7 +2,7 @@
   <div id="app">
     <TopNavigation />
     <!-- Update page after clicking on nav -->
-    <router-view :key="$route.params" />
+    <router-view :key="$route.params.slug" />
   </div>
 </template>
 <script>
