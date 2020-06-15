@@ -12,15 +12,16 @@
 import store from "@/store";
 export default {
   data() {
-    return {
-      destinationId: this.$route.params.id,
-    };
+    return {};
+  },
+  props: {
+    slug: {
+      required: true
+    },
   },
   computed: {
     destination() {
-      return store.destinations.find(
-        (item) => item.slug === this.destinationId
-      );
+      return store.destinations.find((item) => item.slug === this.slug);
     },
   },
 };

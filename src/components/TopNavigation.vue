@@ -2,8 +2,8 @@
   <nav id="nav">
     <ul class="nav-links">
       <li class="links"><router-link to="/">Home</router-link></li>
-      <li class="links" v-for="route in destination" :key="route.id">
-        <router-link :to="{ name: 'detailsPage', params: { id: route.slug } }">
+      <li class="links" v-for="route in destination" :key="route.slug">
+        <router-link :to="{ name: 'detailsPage', params: { slug: route.slug } }">
           {{ route.name }}
         </router-link>
       </li>
