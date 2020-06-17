@@ -2,7 +2,9 @@
   <div id="app">
     <TopNavigation />
     <!-- Update page after clicking on nav -->
-    <router-view :key="$route.params.slug" />
+    <transition name="fade">
+      <router-view :key="$route.params.slug" />
+    </transition>
   </div>
 </template>
 <script>
@@ -18,5 +20,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

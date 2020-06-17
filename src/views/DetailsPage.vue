@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BackButton />
     <section>
       <div class="detail-page">
         <img
@@ -38,7 +39,12 @@
 <script>
 /* eslint-disable */
 import store from "@/store";
+import BackButton from "@/components/BackButton.vue";
+
 export default {
+  components: {
+    BackButton,
+  },
   data() {
     return {};
   },
