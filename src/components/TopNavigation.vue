@@ -3,7 +3,9 @@
     <ul class="nav-links">
       <li class="links"><router-link to="/">Home</router-link></li>
       <li class="links" v-for="route in destination" :key="route.slug">
-        <router-link :to="{ name: 'detailsPage', params: { slug: route.slug } }">
+        <router-link
+          :to="{ name: 'detailsPage', params: { slug: route.slug } }"
+        >
           {{ route.name }}
         </router-link>
       </li>
@@ -23,10 +25,17 @@ export default {
 </script>
 
 <style>
+#nav {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid gray;
+}
 .nav-links {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 10px;
 }
 
 .links {

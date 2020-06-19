@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detail">
     <BackButton />
     <section>
       <div class="detail-page">
@@ -12,7 +12,7 @@
     </section>
     <section class="experience">
       <h2>Top experience in {{ destination.name }}</h2>
-      <div class="cards">
+      <div class="cards" id="experience">
         <div
           class="card"
           v-for="experience in destination.experiences"
@@ -22,6 +22,7 @@
             :to="{
               name: 'experienceDetails',
               params: { experienceSlug: experience.slug },
+              hash: '#experience',
             }"
           >
             <img
@@ -62,6 +63,12 @@ export default {
 };
 </script>
 <style scoped>
+.detail {
+  padding: 2rem 0;
+}
+.experience {
+  padding: 2rem 0;
+}
 img {
   max-width: 600px;
   max-height: 400px;

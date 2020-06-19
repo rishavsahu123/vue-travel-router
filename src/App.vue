@@ -2,7 +2,7 @@
   <div id="app">
     <TopNavigation />
     <!-- Update page after clicking on nav -->
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <router-view :key="$route.params.slug" />
     </transition>
   </div>

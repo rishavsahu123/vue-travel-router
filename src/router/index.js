@@ -38,7 +38,7 @@ const routes = [
     }
   },
   {
-    path:'/404',
+    path: '/404',
     alias: '*',
     name: 'notFound',
     component: () => import(/* webpackChunkName: "notFound" */"@/views/NotFound.vue")
@@ -47,6 +47,23 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      const position = {}
+      if (to.hash) {
+        position.selector = to.hash;
+        if (to.hash === '#experience') {
+          position.offset = { y: 140 }
+        }
+        if (document.querySelector(to.hash)) {
+          return position
+        }
+        return false
+      }
+    }
+  },
   routes
 });
 

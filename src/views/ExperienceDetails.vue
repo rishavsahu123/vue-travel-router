@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Experience</h3>
     <h2>{{ experience.name }}</h2>
     <div class="detail-page">
       <img
