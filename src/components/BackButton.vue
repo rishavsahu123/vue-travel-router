@@ -6,7 +6,7 @@ export default {
   methods: {
     handleBack() {
       //   this.$router.push({
-      //     name: "Home",
+      //     name: "home",
       //   });
       this.$router.go(-1);
     },

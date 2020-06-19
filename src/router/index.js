@@ -1,13 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import store from "../store";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
     props: true
   },
@@ -23,7 +24,24 @@ const routes = [
         component: () => import(/* webpackChunkName: "experienceDetails" */ "@/views/ExperienceDetails.vue"),
         props: true
       }
-    ]
+    ],
+    // Navigation Gaurds
+    beforeEnter: (to, from, next) => {
+      const exists = store.destinations.find(
+        routeDestination => routeDestination.slug === to.params.slug
+      )
+      if (exists) {
+        next()
+      } else {
+        next({ name: 'notFound' })
+      }
+    }
+  },
+  {
+    path:'/404',
+    alias: '*',
+    name: 'notFound',
+    component: () => import(/* webpackChunkName: "notFound" */"@/views/NotFound.vue")
   }
 ];
 
